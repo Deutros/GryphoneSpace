@@ -1,0 +1,69 @@
+<p><img src="https://cdn.xebialabs.com/assets/files/plugins/websphere-application-server.jpg" width="50%" height="50%" /></p>
+
+<h2 id="server">Server</h2>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">##############################</span>
+<span class="err">#</span> <span class="nx">WebApplication</span>             <span class="err">#</span>
+<span class="err">#</span> <span class="nx">Cell</span> <span class="nx">or</span> <span class="nx">profile</span> 	     <span class="err">#</span>
+<span class="err">#</span> <span class="o">**************************</span><span class="err">##</span>
+<span class="err">#</span> <span class="o">*</span><span class="nx">Node</span> <span class="mi">1</span>       <span class="o">|</span> <span class="nx">Node</span> <span class="mi">2</span>    <span class="o">*</span><span class="err">#</span>
+<span class="err">#</span> <span class="o">*</span> <span class="o">------------</span>	    <span class="o">*</span><span class="err">#</span>	
+<span class="err">#</span> <span class="o">*|</span>  <span class="nx">instance</span><span class="p">.</span> <span class="o">|</span>	    <span class="o">*</span><span class="err">#</span>
+<span class="err">#</span> <span class="o">*</span> <span class="o">------------</span>            <span class="o">*</span><span class="err">#</span>
+<span class="err">#</span> <span class="o">***************************</span><span class="err">#</span>
+<span class="err">#</span> <span class="nx">httpd</span>                      <span class="err">#</span>
+<span class="err">##############################</span></code></pre></figure>
+
+<p>Linux Server with on it a webbaplication running a cell/profile with in that a node and the application for example ast01srv5594
+A Cell can have multiple Nodes on one server unless you have the expensive package then you can have multiple nodes in a cell on multiple servers.</p>
+
+<p>Server also runs an HTTPD apache server</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">the</span> <span class="nx">webapplication</span> <span class="nx">server</span> <span class="nx">is</span> <span class="nx">at</span><span class="p">:</span>
+<span class="o">/</span><span class="nx">opt</span><span class="o">/</span><span class="nx">was85</span><span class="o">/</span><span class="k">as</span><span class="sr">/profiles/</span><span class="nx">nodet01</span><span class="o">/</span><span class="p">[</span><span class="nx">bin</span><span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">log</span><span class="p">]</span> <span class="nx">and</span> <span class="nx">such</span>
+       <span class="o">|</span>    <span class="o">|</span>      <span class="o">|</span>      <span class="o">|</span>          <span class="o">|</span>
+       <span class="err">▼</span>    <span class="o">|</span>      <span class="o">|</span>      <span class="o">|</span>          <span class="o">|</span>
+<span class="nx">Websphere</span>   <span class="err">▼</span>      <span class="o">|</span>      <span class="o">|</span>          <span class="o">|</span>
+<span class="nx">Application</span> <span class="nx">Server</span> <span class="err">▼</span>      <span class="o">|</span>          <span class="o">|</span>
+       <span class="nx">Profile</span> <span class="o">/</span> <span class="nx">Class</span>    <span class="err">▼</span>          <span class="o">|</span>
+     	                 <span class="nx">Node</span>        <span class="err">▼</span>      
+                            <span class="nx">Application</span></code></pre></figure>
+
+<p>The webapplication server can be reached on
+<code class="highlighter-rouge">https://server.x.nl:5003/admin</code></p>
+
+<h2 id="websphere-webinterface">Websphere WebInterface</h2>
+<p>DataSource 	= Database
+JBDC	   	= Java Database Connection
+JMS	 	= Java Messaging System
+QSSC		= de queue manager waar we naar toe sturen</p>
+
+<p>MQ = de message queue van IBM deze kan ook JMS (Java Message System)
+IBM WebSphere Transactie Log stuur dus zijn berichten naar MQ</p>
+
+<p>Wij gebruiken Base WEbsphere Package/Versie</p>
+
+<p>The message Logs Location:
+<code class="highlighter-rouge">/opt/was85/as/profiles/nodet01/translog/cellt01/nodet01/(instance)/(logs)</code></p>
+
+<p>voor verbinding is nodig
+host
+node verbinding
+poort
+queue coonnection factory</p>
+
+<p>Server with RHEL7
+Websphere Application java hosting PEGA inside (websphere does all the connections to other sources)
+HTTPD Application apache</p>
+
+<h2 id="queue-information">Queue Information</h2>
+<h3 id="what-is-queue-connection-factory-in-websphere">What is queue connection factory in WebSphere?</h3>
+<p>WebSphere MQ messaging provider queue connection factory settings. … These configuration properties control how connections are created to associated JMS queue destinations. A WebSphere MQ queue connection factory is used to create JMS connections to queues provided by WebSphere MQ for point-to-point messaging.</p>
+
+<h3 id="websphere-mq-queues">WebSphere MQ queues</h3>
+<p>A queue is a container for messages. Business applications that are connected to the queue manager that hosts the queue can retrieve messages from the queue or can put messages on the queue.</p>
+
+<h3 id="queuueconnectionfactory">QueuueConnectionFactory</h3>
+<p>A client uses a QueueConnectionFactory object to create QueueConnection objects with a point-to-point JMS provider. QueueConnectionFactory can be used to create a QueueConnection , from which specialized queue-related objects can be created.</p>
+
+<p>A WebSphere MQ topic connection factory is used to create JMS connections to topic destinations provided by WebSphere MQ for publish/subscribe messaging. … In the navigation pane, click Resources &gt; JMS-&gt;Topic connection factories to display existing topic connection factories.</p>
