@@ -71,6 +71,19 @@ So this becomes:
 
 The ping will run because the left side is false so the `||` will run the right command.
 
+## Making an for x scripty
+This script will scp copy the file to several servers leaving you only to type your password.
+
+{% highlight javascript %}
+array=(qm1 qm2 qm3)
+echo "Array size: ${#array[*]}"
+echo "Array server:"
+for server in ${array[*]}
+do
+scp file.txt <username>@"$server".nl:/tmp/
+done
+{% endhighlight %}
+
 ## Sources
 1. <a href="http://www.tldp.org/LDP/abs/html/io-redirection.html" target="_blank">Bash I/O Redirectors</a>
 2. <a href="http://tldp.org/LDP/abs/html/ops.html" target="_blank">Bash all simple Opperators</a>
