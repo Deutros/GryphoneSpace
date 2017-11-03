@@ -4,7 +4,7 @@ title:  "WebSphere"
 image: ''
 date:   2017-10-08 00:00:00
 tags:
-- WebSphere 
+- WebSphere
 description: ''
 categories:
 - WebSphere
@@ -18,11 +18,11 @@ categories:
 {% highlight javascript %}
 ##############################
 # WebApplication             #
-# Cell or profile 	     #
+# Cell or profile 	         #
 # **************************##
 # *Node 1       | Node 2    *#
-# * ------------	    *#	
-# *|  instance. |	    *#
+# * ------------	          *#
+# *|  instance. |	          *#
 # * ------------            *#
 # ***************************#
 # httpd                      #
