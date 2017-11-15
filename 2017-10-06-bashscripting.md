@@ -21,7 +21,7 @@ Like in math bash can perform comamnds like (1+2)-3=0
 This is done with an Expression that looks like this [[ 1 + 1 ]]
 
 ## Opperators
-{% highlight javascript %}
+{% highlight bash %}
 	"A ; B" 	Run A and then B regardless of success of A
 	"A && B" 	Run B if A succeeded
 	"A || B" 	Run B if A failed
@@ -30,14 +30,14 @@ This is done with an Expression that looks like this [[ 1 + 1 ]]
 
 ## Redirecting Output
 You can redirect Input/Output
-{% highlight javascript %}
-	1 > 1	Redirect to a file and overwrite
-	1 >> 1	Redirect to a file and append at bottom
-	2>&1 	Redirects Channel 2 (Standard Error) and Channel 1 (Standard Output) to the same place which in this context is Channel 1 (Standard Output), and thence your log file.
+{% highlight bash %}
+	1 > 1	#Redirect to a file and overwrite
+	1 >> 1	#Redirect to a file and append at bottom
+	2>&1 	#Redirects Channel 2 (Standard Error) and Channel 1 (Standard Output) to the same place which in this context is Channel 1 (Standard Output), and thence your log file.
 {% endhighlight %}
 
 ## Combining the topics! Using the `||` operator with -x
-{% highlight javascript %}
+{% highlight bash %}
 	[root@qmlf666 ~]# [[ -x /bin/ping ]] || ping 8.8.8.8
 	[root@qmlf666 ~]# [[ -x /bin/pingwrong ]] || ping 8.8.8.8
 	PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
@@ -74,14 +74,26 @@ The ping will run because the left side is false so the `||` will run the right 
 ## Making an for x scripty
 This script will scp copy the file to several servers leaving you only to type your password.
 
-{% highlight javascript %}
+{% highlight bash script %}
 array=(qm1 qm2 qm3)
-echo "Array size: ${#array[*]}"
+echo "Array size: ${#array[\*]}"
 echo "Array server:"
-for server in ${array[*]}
+for server in ${array[\*]}
 do
 scp file.txt <username>@"$server".nl:/tmp/
 done
+{% endhighlight %}
+
+## Passing commands through sudo rather then becoming sudo
+In scripts when you do a sudo su - user this will interupt the script.
+However you can pass the command through an other user using a pipe |
+this will make the left part the input for the right part in simple terms.
+
+{% highlight bash script %}
+echo touch /tmp/#metoo | sudo su - user
+
+example of a script
+ssh <user>@"$item".linux.example.nl "echo touch /tmp/#metoo | sudo su - wsp"
 {% endhighlight %}
 
 ## Sources
