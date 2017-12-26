@@ -15,7 +15,7 @@ categories:
 
 ## Server
 
-{% highlight javascript %}
+{% highlight bash script %}
 ##############################
 # WebApplication             #
 # Cell or profile 	         #
@@ -34,7 +34,7 @@ A Cell can have multiple Nodes on one server unless you have the expensive packa
 
 Server also runs an HTTPD apache server
 
-{% highlight javascript %}
+{% highlight bash script %}
 the webapplication server is at:
 /opt/was85/as/profiles/nodet01/[bin/etc/log] and such
        |    |      |      |          |
